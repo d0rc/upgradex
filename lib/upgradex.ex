@@ -25,14 +25,20 @@ end
 
 defmodule Upgradex.Worker do
 	use ExActor, export: Upgradex.Worker
-	defrecordp State, [branch: nil, commit: nil]
+	defrecord State, [branch: nil, commit: nil]
 	@timeout 1000
 
 	def init(_) do
 		{:ok, State[branch: Upgradex.Git.branch, commit: Upgradex.Git.commit], @timeout}
 	end
 	definfo :timeout, state: state = State[branch: branch, commit: commit] do
-		IO.puts "Updating #{inspect branch}, #{inspect commit}"
-		{:noreply, state, @timeout}
+		System.cmd "git pull origin #{branch}"
+		case State[branch: Upgradex.Git.branch, commit: Upgradex.Git.commit] do
+			new_state = State[commit: ^commit] -> 
+				{:noreply, state, @timeout}
+			new_state ->
+				IO.puts "Need to upgrade!"
+				{:noreply, new_state, @timeout}
+		end
 	end
 end
