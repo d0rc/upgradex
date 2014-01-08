@@ -9,13 +9,13 @@ defmodule Upgradex do
 end
 
 defmodule Upgradex.Git do
-	def get_branch do
+	def branch do
 		<<"# On branch ", branch::binary>> = System.cmd("git status") 
 			|> String.split("\n") 
 			|> Enum.first
 		branch
 	end
-	def get_commit do
+	def commit do
 		<<"commit ", commit::binary>> = System.cmd("git log") 
 			|> String.split("\n") 
 			|> Enum.first
