@@ -10,7 +10,10 @@ defmodule Upgradex.Mixfile do
 
   # Configuration for the OTP application
   def application do
-    [mod: { Upgradex, [] }]
+    [
+      mod: { Upgradex, [] },
+      applications: [:exactor]
+    ]
   end
 
   # Returns the list of dependencies in the format:
@@ -19,6 +22,8 @@ defmodule Upgradex.Mixfile do
   # To specify particular versions, regardless of the tag, do:
   # { :barbat, "~> 0.1", github: "elixir-lang/barbat" }
   defp deps do
-    []
+    [
+      {:exactor, github: "sasa1977/exactor"}
+    ]
   end
 end

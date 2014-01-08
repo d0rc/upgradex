@@ -9,6 +9,7 @@ defmodule Upgradex.Supervisor do
     children = [
       # Define workers and child supervisors to be supervised
       # worker(Upgradex.Worker, [])
+      worker(Upgradex.Worker, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/Supervisor.Behaviour.html
