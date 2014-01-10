@@ -38,6 +38,8 @@ defmodule Upgradex.Worker do
 				{:noreply, state, @timeout}
 			new_state ->
 				IO.puts "Need to upgrade!"
+				System.cmd "mix deps.get"
+				System.cmd "mix compile"
 				{:noreply, new_state, @timeout}
 		end
 	end

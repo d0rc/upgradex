@@ -1,1 +1,3 @@
-[ "exactor": {:git, "git://github.com/sasa1977/exactor.git", "ee207af78849fc277b5d33edfbb493e6f369320a", []} ]
+[ "exactor": {:git, "git://github.com/sasa1977/exactor.git", "ee207af78849fc277b5d33edfbb493e6f369320a", []},
+  "exreloader": {:git, "git://github.com/yrashk/exreloader.git", "1c23229b917893fcc03b1b4b2c932900baf3ba58", []},
+  "genx": {:git, "git://github.com/yrashk/genx.git", "1b857fa422a47269d5f151ecababd83f4835527d", []} ]
